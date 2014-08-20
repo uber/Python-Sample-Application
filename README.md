@@ -36,6 +36,12 @@ If you want to work on this application we’d love your pull requests and ticke
 1. If you open up a ticket, please make sure it describes the problem or feature request fully.
 2. If you send us a pull request, make sure you add a test for what you added, and make sure the full test suite runs with nosetests -v.
 
+Deploy to Heroku
+----------------
+
+Click the buttom below to set up this sample app on Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Making Requests
 ---------------
