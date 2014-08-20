@@ -6,8 +6,8 @@
     "scopes": "profile history",
     "name": "Sample app",
     "base_uber_url": "https://api.uber.com/v1/",
-    "start_latitude": "37.781955",
-    "start_longitude":  "-122.402367",
-    "end_latitude": "37.744352",
-    "end_longitude": "-122.416743"
+    "start_latitude": "44.9492680",
+    "start_longitude":  "-93.2969080",
+    "end_latitude": "44.9832060",
+    "end_longitude": "-93.2659090"
 }
