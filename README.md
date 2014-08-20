@@ -43,6 +43,8 @@ Click the buttom below to set up this sample app on Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+After creating your app on Heroku, you have to configure the redirect url for your Uber OAuth app. Use a `https://{my-app-name}.herokuapp.com/submit` url.
+
 Making Requests
 ---------------
 
