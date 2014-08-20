@@ -19,6 +19,7 @@ How To Use This
 5. Run ‘python app.py’
 6. Navigate to http://localhost:7000 in your browser
 
+4. [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Testing
 -------
