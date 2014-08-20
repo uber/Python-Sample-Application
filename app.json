@@ -1,0 +1,13 @@
+{
+  "name": "Uber sample application",
+  "description": "A simply Python app that demonstrates the Uber API.",
+  "keywords": [
+    "uber",
+    "productivity"
+  ],
+  "logo": "http://abovethecrowd.com/wp-content/uploads/2014/03/New-Logo-Vertical-Dark.jpg",
+  "env": {
+    "UBER_CLIENT_ID": "",
+    "UBER_CLIENT_SECRET": ""
+  }
+}
