@@ -146,7 +146,7 @@ def time():
 
 @app.route('/price', methods=['GET'])
 def price():
-    """Example call to the time estimates endpoint.
+    """Example call to the price estimates endpoint.
 
     Returns the time estimates from the given lat/lng given below.
     """
