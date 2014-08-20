@@ -48,10 +48,9 @@ def signup():
 
     You should navigate here first. It will redirect to login.uber.com.
     """
-    parsed_url = urlparse(request.url)
     params = {
         'response_type': 'code',
-        'redirect_uri': parsed_url.scheme + parsed_url.hostname + '/submit',
+        'redirect_uri': get_redirect_uri(request),
         'scope': config.get('scopes'),
     }
     url = generate_oauth_service().get_authorize_url(**params)
@@ -65,9 +64,8 @@ def submit():
     Your redirect uri will redirect you here, where you will exchange
     a code that can be used to obtain an access token for the logged-in use.
     """
-    parsed_url = urlparse(request.url)
     params = {
-        'redirect_uri': parsed_url.scheme + parsed_url.hostname + '/submit',
+        'redirect_uri': get_redirect_uri(request),
         'code': request.args.get('code'),
         'grant_type': 'authorization_code'
     }
@@ -217,6 +215,11 @@ def me():
         data=response.text,
     )
 
+def get_redirect_uri(request):
+    parsed_url = urlparse(request.url)
+    if parsed_url.hostname == 'localhost':
+        return str.format('http://{0}:{1}/submit', parsed_url.hostname, parsed_url.port)
+    return str.format('https://{0}/submit', parsed_url.hostname)
 
 if __name__ == '__main__':
     app.run(port=7000)
