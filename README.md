@@ -14,12 +14,19 @@ How To Use This
 
 1. Navigate over to https://developer.uber.com/, and sign up for an Uber developer account.
 2. Register a new Uber application and make your Redirect URI http://localhost:7000/submit
-3. Fill in the relevant information in the config.json file in the root folder and add your client id and secret as the environment variables UBER_CLIENT_ID AND UBER_CLIENT_SECRET. Run ‘export UBER_CLIENT_ID=”YOUR_CLIENT_ID”&&export UBER_CLIENT_SECRET=”YOUR_CLIENT_SECRET”’
+3. Record the Client ID and Client Secret
+
+Running Locally
+---------------
+
+1. Fill in the relevant information in the `config.json` file in the root folder and add your client id and secret as the environment variables UBER_CLIENT_ID AND UBER_CLIENT_SECRET. Run ‘export UBER_CLIENT_ID=”YOUR_CLIENT_ID”&&export UBER_CLIENT_SECRET=”YOUR_CLIENT_SECRET”’
 4. Run ‘pip install -r requirements.txt’ to install dependencies
 5. Run ‘python app.py’
-6. Navigate to http://localhost:7000 in your browser
 
-4. [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+Running on Heroku
+-----------------
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Testing
 -------
