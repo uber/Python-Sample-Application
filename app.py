@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 from flask import Flask, render_template, request, redirect, session
 from rauth import OAuth2Service
+from urlparse import urlparse
 
 import requests
 import os
@@ -47,9 +48,10 @@ def signup():
 
     You should navigate here first. It will redirect to login.uber.com.
     """
+    parsed_url = urlparse(request.url)
     params = {
         'response_type': 'code',
-        'redirect_uri': config.get('redirect_uri'),
+        'redirect_uri': parsed_url.scheme + parsed_url.hostname + '/submit',
         'scope': config.get('scopes'),
     }
     url = generate_oauth_service().get_authorize_url(**params)
@@ -63,8 +65,9 @@ def submit():
     Your redirect uri will redirect you here, where you will exchange
     a code that can be used to obtain an access token for the logged-in use.
     """
+    parsed_url = urlparse(request.url)
     params = {
-        'redirect_uri': config.get('redirect_uri'),
+        'redirect_uri': parsed_url.scheme + parsed_url.hostname + '/submit',
         'code': request.args.get('code'),
         'grant_type': 'authorization_code'
     }

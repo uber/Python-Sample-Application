@@ -1,5 +1,4 @@
 {
-    "redirect_uri": "http://localhost:7000/submit",
     "access_token_url": "https://login.uber.com/oauth/token",
     "authorize_url": "https://login.uber.com/oauth/authorize",
     "base_url": "https://login.uber.com/",
