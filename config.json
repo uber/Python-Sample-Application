@@ -1,0 +1,13 @@
+{
+    "redirect_uri": "http://localhost:7000/submit",
+    "access_token_url": "https://login.uber.com/oauth/token",
+    "authorize_url": "https://login.uber.com/oauth/authorize",
+    "base_url": "https://login.uber.com/",
+    "scopes": "profile history",
+    "name": "Sample app",
+    "base_uber_url": "https://api.uber.com/v1/",
+    "start_latitude": "37.781955",
+    "start_longitude":  "-122.402367",
+    "end_latitude": "37.744352",
+    "end_longitude": "-122.416743"
+}
