@@ -9,6 +9,5 @@
   "env": {
     "UBER_CLIENT_ID": "",
     "UBER_CLIENT_SECRET": ""
-  },
-
+  }
 }
