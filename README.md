@@ -13,7 +13,7 @@ How To Use This
 ---------------
 
 1. Navigate over to https://developer.uber.com/, and sign up for an Uber developer account.
-2. Register a new Uber application and make your Redirect URI http://localhost:7000/submit
+2. Register a new Uber application and make your Redirect URI http://localhost:7000/submit - both OAuth scopes are required
 3. Fill in the relevant information in the config.json file in the root folder and add your client id and secret as the environment variables UBER_CLIENT_ID AND UBER_CLIENT_SECRET. Run ‘export UBER_CLIENT_ID=”YOUR_CLIENT_ID”&&export UBER_CLIENT_SECRET=”YOUR_CLIENT_SECRET”’
 4. Run ‘pip install -r requirements.txt’ to install dependencies
 5. Run ‘python app.py’
