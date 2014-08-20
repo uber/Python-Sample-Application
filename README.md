@@ -17,6 +17,7 @@ How To Use This
 3. Fill in the relevant information in the config.json file in the root folder and add your client id and secret as the environment variables UBER_CLIENT_ID AND UBER_CLIENT_SECRET. Run ‘export UBER_CLIENT_ID=”YOUR_CLIENT_ID”&&export UBER_CLIENT_SECRET=”YOUR_CLIENT_SECRET”’
 4. Run ‘pip install -r requirements.txt’ to install dependencies
 5. Run ‘python app.py’
+6. Navigate to http://localhost:7000 in your browser
 
 
 Testing
