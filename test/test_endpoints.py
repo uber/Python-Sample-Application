@@ -55,6 +55,7 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('products_success'):
                 response = client.get('/products')
+        self.assertIn('products', response.data)
         self.assertEquals(response.status_code, 200)
 
     def test_products_endpoint_returns_failure(self):
@@ -79,6 +80,7 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('time_estimates_success'):
                 response = client.get('/time')
+        self.assertIn('times', response.data)
         self.assertEquals(response.status_code, 200)
 
     def test_time_estimates_endpoint_returns_failure(self):
@@ -103,6 +105,7 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('price_estimates_success'):
                 response = client.get('/price')
+        self.assertIn('prices', response.data)
         self.assertEquals(response.status_code, 200)
 
     def test_price_estimates_endpoint_returns_failure(self):
@@ -127,6 +130,7 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('history_success'):
                 response = client.get('/history')
+        self.assertIn('history', response.data)
         self.assertEquals(response.status_code, 200)
 
     def test_history_endpoint_returns_failure(self):
@@ -151,6 +155,7 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('me_success'):
                 response = client.get('/me')
+        self.assertIn('picture', response.data)
         self.assertEquals(response.status_code, 200)
 
     def test_me_endpoint_returns_failure(self):
