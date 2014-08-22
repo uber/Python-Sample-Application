@@ -221,8 +221,8 @@ def get_redirect_uri(request):
     """Returns OAuth redirect URI."""
     parsed_url = urlparse(request.url)
     if parsed_url.hostname == 'localhost':
-        return str.format('http://{0}:{1}/submit', parsed_url.hostname, parsed_url.port)
-    return str.format('https://{0}/submit', parsed_url.hostname)
+        return 'http://{hostname}:{port}/submit'.format(hostname=parsed_url.hostname, port=parsed_url.port)
+    return 'https://{hostname}/submit'.format(hostname=parsed_url.hostname)
 
 if __name__ == '__main__':
     app.run(port=7000)
