@@ -1,15 +1,19 @@
 from __future__ import absolute_import
-from flask import Flask, render_template, request, redirect, session
-from rauth import OAuth2Service
 
-import requests
-import os
 import json
+import os
+from urlparse import urlparse
+
+from flask import Flask, render_template, request, redirect, session
+from flask_sslify import SSLify
+from rauth import OAuth2Service
+import requests
 
 app = Flask(__name__, static_folder='static', static_url_path='')
 app.requests_session = requests.Session()
 app.secret_key = os.urandom(24)
 
+sslify = SSLify(app)
 
 with open('config.json') as f:
     config = json.load(f)
@@ -49,7 +53,7 @@ def signup():
     """
     params = {
         'response_type': 'code',
-        'redirect_uri': config.get('redirect_uri'),
+        'redirect_uri': get_redirect_uri(request),
         'scope': config.get('scopes'),
     }
     url = generate_oauth_service().get_authorize_url(**params)
@@ -64,7 +68,7 @@ def submit():
     a code that can be used to obtain an access token for the logged-in use.
     """
     params = {
-        'redirect_uri': config.get('redirect_uri'),
+        'redirect_uri': get_redirect_uri(request),
         'code': request.args.get('code'),
         'grant_type': 'authorization_code'
     }
@@ -214,6 +218,12 @@ def me():
         data=response.text,
     )
 
+def get_redirect_uri(request):
+    """Returns OAuth redirect URI."""
+    parsed_url = urlparse(request.url)
+    if parsed_url.hostname == 'localhost':
+        return 'http://{hostname}:{port}/submit'.format(hostname=parsed_url.hostname, port=parsed_url.port)
+    return 'https://{hostname}/submit'.format(hostname=parsed_url.hostname)
 
 if __name__ == '__main__':
     app.run(port=7000)

@@ -13,7 +13,7 @@ How To Use This
 ---------------
 
 1. Navigate over to https://developer.uber.com/, and sign up for an Uber developer account.
-2. Register a new Uber application and make your Redirect URI http://localhost:7000/submit
+2. Register a new Uber application and make your Redirect URI http://localhost:7000/submit - `profile` and `history` OAuth scopes are required
 3. Fill in the relevant information in the config.json file in the root folder and add your client id and secret as the environment variables UBER_CLIENT_ID AND UBER_CLIENT_SECRET. Run 'export UBER_CLIENT_ID="YOUR_CLIENT_ID"&&export UBER_CLIENT_SECRET="YOUR_CLIENT_SECRET"'
 4. Run ‘pip install -r requirements.txt’ to install dependencies
 5. Run ‘python app.py’
@@ -36,6 +36,14 @@ If you want to work on this application we’d love your pull requests and ticke
 1. If you open up a ticket, please make sure it describes the problem or feature request fully.
 2. If you send us a pull request, make sure you add a test for what you added, and make sure the full test suite runs with nosetests -v.
 
+Deploy to Heroku
+----------------
+
+Click the buttom below to set up this sample app on Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+After creating your app on Heroku, you have to configure the redirect url for your Uber OAuth app. Use a `https://{my-app-name}.herokuapp.com/submit` url.
 
 Making Requests
 ---------------
