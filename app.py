@@ -218,6 +218,7 @@ def me():
     )
 
 def get_redirect_uri(request):
+    """Returns OAuth redirect URI."""
     parsed_url = urlparse(request.url)
     if parsed_url.hostname == 'localhost':
         return str.format('http://{0}:{1}/submit', parsed_url.hostname, parsed_url.port)
