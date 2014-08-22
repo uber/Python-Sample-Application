@@ -6,3 +6,8 @@ pytest-cov==1.6
 
 # HTTP Fixtures
 betamax==0.4.0
+
+# LINT OR DIE
+flake8==2.1.0
+pep8==1.5.6
+pyflakes==0.8.1
