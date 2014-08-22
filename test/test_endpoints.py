@@ -7,6 +7,7 @@ with Betamax.configure() as config:
     config.cassette_library_dir = 'test/fixtures'
 
 test_auth_token = '42Kq726Vv6lzJ0TMhXWsgUulVjRsxh'
+test_auth_code = 'eIzpzFBUv1X57AFmoKPSMBZrAnb4nK'
 
 
 class TestCases(unittest.TestCase):
@@ -26,6 +27,24 @@ class TestCases(unittest.TestCase):
         response = app.test_client().get('/')
         self.assertIn('login.uber.com', response.data)
 
+    def test_submit_endpoint_success(self):
+        """Assert that the / endpoint correctly redirects to login.uber.com."""
+        with app.test_client() as client:
+            with client.session_transaction() as session:
+                session['access_token'] = test_auth_token
+            with Betamax(app.requests_session).use_cassette('submit_success'):
+                response = client.get('/submit?code=%s' % test_auth_code)
+        self.assertEquals(response.status_code, 200)
+
+    def test_submit_endpoint_failure(self):
+        """Assert that the submit endpoint returns no code in the response."""
+        with app.test_client() as client:
+            with client.session_transaction() as session:
+                session['access_token'] = test_auth_token
+            with Betamax(app.requests_session).use_cassette('submit_failure'):
+                response = client.get('/submit?code=not_a_code')
+        self.assertIn('None', response.data)
+
     def test_products_endpoint_returns_success(self):
         """Assert that the products endpoint returns success.
 
@@ -36,6 +55,7 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('products_success'):
                 response = client.get('/products')
+        self.assertIn('products', response.data)
         self.assertEquals(response.status_code, 200)
 
     def test_products_endpoint_returns_failure(self):
@@ -60,6 +80,7 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('time_estimates_success'):
                 response = client.get('/time')
+        self.assertIn('times', response.data)
         self.assertEquals(response.status_code, 200)
 
     def test_time_estimates_endpoint_returns_failure(self):
@@ -84,6 +105,7 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('price_estimates_success'):
                 response = client.get('/price')
+        self.assertIn('prices', response.data)
         self.assertEquals(response.status_code, 200)
 
     def test_price_estimates_endpoint_returns_failure(self):
@@ -108,6 +130,7 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('history_success'):
                 response = client.get('/history')
+        self.assertIn('history', response.data)
         self.assertEquals(response.status_code, 200)
 
     def test_history_endpoint_returns_failure(self):
@@ -120,4 +143,29 @@ class TestCases(unittest.TestCase):
                 session['access_token'] = 'NOT_A_CODE'
             with Betamax(app.requests_session).use_cassette('history_failure'):
                 response = client.get('/history')
+        self.assertEquals(response.status_code, 401)
+
+    def test_me_endpoint_returns_success(self):
+        """Assert that the me endpoint returns success.
+
+        When a valid key is passed in.
+        """
+        with app.test_client() as client:
+            with client.session_transaction() as session:
+                session['access_token'] = test_auth_token
+            with Betamax(app.requests_session).use_cassette('me_success'):
+                response = client.get('/me')
+        self.assertIn('picture', response.data)
+        self.assertEquals(response.status_code, 200)
+
+    def test_me_endpoint_returns_failure(self):
+        """Assert that the me endpoint returns failure.
+
+        When an invalid key is passed in.
+        """
+        with app.test_client() as client:
+            with client.session_transaction() as session:
+                session['access_token'] = 'NOT_A_CODE'
+            with Betamax(app.requests_session).use_cassette('me_failure'):
+                response = client.get('/me')
         self.assertEquals(response.status_code, 401)
