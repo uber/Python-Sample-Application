@@ -24,15 +24,8 @@ How To Use This
 Testing
 -------
 
-1. Install the dependencies with:
-
-```bash
-pip install -r requirements.txt
-pip install -r requirements-test.txt
-python setup.py develop
-```
-
-2. Run the command `py.test test/`
+1. Install the dependencies with `make bootstrap`
+2. Run the command `make test`
 3. If you delete the fixtures, or decide to add some of your own, you’ll have to re-generate them, and the way this is done is by running the app, getting an auth_token from the main page of the app. Paste that token in place of the `test_auth_token` at the top of the `test_endpoints.py` file, then run the tests.
 
 
@@ -42,7 +35,7 @@ Development
 If you want to work on this application we’d love your pull requests and tickets on GitHub!
 
 1. If you open up a ticket, please make sure it describes the problem or feature request fully.
-2. If you send us a pull request, make sure you add a test for what you added, and make sure the full test suite runs with `py.test`.
+2. If you send us a pull request, make sure you add a test for what you added, and make sure the full test suite runs with `make test`.
 
 Deploy to Heroku
 ----------------
