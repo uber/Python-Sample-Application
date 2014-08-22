@@ -1,7 +1,7 @@
 Example Uber app for developers
 ==============================
 
-[![TravisCI](https://travis-ci.org/uber/doubles.svg?branch=master)](https://travis-ci.org/uber/doubles)
+[![TravisCI](https://travis-ci.org/uber/Python-Sample-Application.svg?branch=master)](https://travis-ci.org/uber/Python-Sample-Application)
 
 https://developer.uber.com/
 
