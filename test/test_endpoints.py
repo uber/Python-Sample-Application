@@ -7,7 +7,7 @@ with Betamax.configure() as config:
     config.cassette_library_dir = 'test/fixtures'
 
 test_auth_token = '42Kq726Vv6lzJ0TMhXWsgUulVjRsxh'
-
+test_auth_code = 'eIzpzFBUv1X57AFmoKPSMBZrAnb4nK'
 
 class TestCases(unittest.TestCase):
     def setUp(self):
@@ -32,7 +32,7 @@ class TestCases(unittest.TestCase):
             with client.session_transaction() as session:
                 session['access_token'] = test_auth_token
             with Betamax(app.requests_session).use_cassette('submit_success'):
-                response = client.get('/submit?code=eIzpzFBUv1X57AFmoKPSMBZrAnb4nK')
+                response = client.get('/submit?code=%s' % test_auth_code)
         self.assertEquals(response.status_code, 200)
 
     def test_submit_endpoint_failure(self):
