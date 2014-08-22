@@ -1,12 +1,12 @@
 from __future__ import absolute_import
 from flask import Flask, render_template, request, redirect, session
-from rauth import OAuth2Service
-from urlparse import urlparse
 from flask_sslify import SSLify
+from rauth import OAuth2Service
 
-import requests
-import os
 import json
+import os
+import requests
+from urlparse import urlparse
 
 app = Flask(__name__, static_folder='static', static_url_path='')
 app.requests_session = requests.Session()
