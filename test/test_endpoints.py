@@ -11,6 +11,8 @@ test_auth_token = '42Kq726Vv6lzJ0TMhXWsgUulVjRsxh'
 
 class TestCases(unittest.TestCase):
     def setUp(self):
+        # Necessary to disable SSLify
+        app.debug = True
         self.test_app = app.test_client()
         self.session = app.requests_session
 
