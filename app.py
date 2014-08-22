@@ -20,7 +20,7 @@ with open('config.json') as f:
 
 
 def generate_oauth_service():
-    """Prepares the OAuth2Service that is used to make requests later."""
+    """Prepare the OAuth2Service that is used to make requests later."""
     return OAuth2Service(
         client_id=os.environ.get('UBER_CLIENT_ID'),
         client_secret=os.environ.get('UBER_CLIENT_SECRET'),
@@ -32,7 +32,7 @@ def generate_oauth_service():
 
 
 def generate_ride_headers(token):
-    """Generates the header object that is used to make api requests."""
+    """Generate the header object that is used to make api requests."""
     return {
         'Authorization': 'bearer %s' % token,
         'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ def generate_ride_headers(token):
 
 @app.route('/health', methods=['GET'])
 def health():
-    """Used to check the status of this application."""
+    """Check the status of this application."""
     return ';-)'
 
 
@@ -96,10 +96,10 @@ def demo():
 
 @app.route('/products', methods=['GET'])
 def products():
-    '''Example call to the products endpoint.
+    """Example call to the products endpoint.
 
     Returns all the products currently available in San Francisco.
-    '''
+    """
     url = config.get('base_uber_url') + 'products'
     params = {
         'latitude': config.get('start_latitude'),
@@ -179,7 +179,7 @@ def price():
 
 @app.route('/history', methods=['GET'])
 def history():
-    """Returns the last 5 trips made by the logged in user."""
+    """Return the last 5 trips made by the logged in user."""
     url = config.get('base_uber_url') + 'history'
     params = {
         'offset': 0,
@@ -203,7 +203,7 @@ def history():
 
 @app.route('/me', methods=['GET'])
 def me():
-    """Returns user information including name, picture and email."""
+    """Return user information including name, picture and email."""
     url = config.get('base_uber_url') + 'me'
     response = app.requests_session.get(
         url,
@@ -218,8 +218,9 @@ def me():
         data=response.text,
     )
 
+
 def get_redirect_uri(request):
-    """Returns OAuth redirect URI."""
+    """Return OAuth redirect URI."""
     parsed_url = urlparse(request.url)
     if parsed_url.hostname == 'localhost':
         return 'http://{hostname}:{port}/submit'.format(hostname=parsed_url.hostname, port=parsed_url.port)

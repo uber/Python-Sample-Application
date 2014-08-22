@@ -8,25 +8,26 @@ with Betamax.configure() as config:
 
 test_auth_token = '42Kq726Vv6lzJ0TMhXWsgUulVjRsxh'
 
+
 class TestCases(unittest.TestCase):
     def setUp(self):
         self.test_app = app.test_client()
         self.session = app.requests_session
 
     def test_health_endpoint(self):
-        """Asserts that the health endpoint works."""
+        """Assert that the health endpoint works."""
         response = app.test_client().get('/health')
         self.assertEquals(response.data, ';-)')
 
     def test_root_endpoint(self):
-        """Asserts that the / endpoint correctly redirects to login.uber.com."""
+        """Assert that the / endpoint correctly redirects to login.uber.com."""
         response = app.test_client().get('/')
         self.assertIn('login.uber.com', response.data)
 
     def test_products_endpoint_returns_success(self):
-        """Asserts that the products endpoint returns success
+        """Assert that the products endpoint returns success.
 
-        when a valid key is passed in.
+        When a valid key is passed in.
         """
         with app.test_client() as client:
             with client.session_transaction() as session:
@@ -36,9 +37,9 @@ class TestCases(unittest.TestCase):
         self.assertEquals(response.status_code, 200)
 
     def test_products_endpoint_returns_failure(self):
-        """Asserts that the products endpoint returns failure
+        """Assert that the products endpoint returns failure.
 
-        when an invalid key is passed in.
+        When an invalid key is passed in.
         """
         with app.test_client() as client:
             with client.session_transaction() as session:
@@ -48,9 +49,9 @@ class TestCases(unittest.TestCase):
         self.assertEquals(response.status_code, 401)
 
     def test_time_estimates_endpoint_returns_success(self):
-        """Asserts that the time estimates endpoint returns success
+        """Assert that the time estimates endpoint returns success.
 
-        when a valid key is passed in.
+        When a valid key is passed in.
         """
         with app.test_client() as client:
             with client.session_transaction() as session:
@@ -60,9 +61,9 @@ class TestCases(unittest.TestCase):
         self.assertEquals(response.status_code, 200)
 
     def test_time_estimates_endpoint_returns_failure(self):
-        """Asserts that the time estimates endpoint returns failure
+        """Assert that the time estimates endpoint returns failure.
 
-        when an invalid key is passed in.
+        When an invalid key is passed in.
         """
         with app.test_client() as client:
             with client.session_transaction() as session:
@@ -72,9 +73,9 @@ class TestCases(unittest.TestCase):
         self.assertEquals(response.status_code, 401)
 
     def test_price_estimates_endpoint_returns_success(self):
-        """Asserts that the price estimates endpoint returns success
+        """Assert that the price estimates endpoint returns success.
 
-        when a valid key is passed in.
+        When a valid key is passed in.
         """
         with app.test_client() as client:
             with client.session_transaction() as session:
@@ -84,9 +85,9 @@ class TestCases(unittest.TestCase):
         self.assertEquals(response.status_code, 200)
 
     def test_price_estimates_endpoint_returns_failure(self):
-        """Asserts that the price estimates endpoint returns failure
+        """Assert that the price estimates endpoint returns failure.
 
-        when an invalid key is passed in.
+        When an invalid key is passed in.
         """
         with app.test_client() as client:
             with client.session_transaction() as session:
@@ -96,9 +97,9 @@ class TestCases(unittest.TestCase):
         self.assertEquals(response.status_code, 401)
 
     def test_history_endpoint_returns_success(self):
-        """Asserts that the history endpoint returns success
+        """Assert that the history endpoint returns success.
 
-        when a valid key is passed in.
+        When a valid key is passed in.
         """
         with app.test_client() as client:
             with client.session_transaction() as session:
@@ -108,9 +109,9 @@ class TestCases(unittest.TestCase):
         self.assertEquals(response.status_code, 200)
 
     def test_history_endpoint_returns_failure(self):
-        """Asserts that the price estimates endpoint returns failure
+        """Assert that the price estimates endpoint returns failure.
 
-        when an invalid key is passed in.
+        When an invalid key is passed in.
         """
         with app.test_client() as client:
             with client.session_transaction() as session:
