@@ -1,0 +1,8 @@
+# Test harness
+pytest==2.5.2
+
+# Coverage
+pytest-cov==1.6
+
+# HTTP Fixtures
+betamax==0.4.0
