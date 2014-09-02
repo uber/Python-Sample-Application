@@ -2,7 +2,7 @@
     "access_token_url": "https://login.uber.com/oauth/token",
     "authorize_url": "https://login.uber.com/oauth/authorize",
     "base_url": "https://login.uber.com/",
-    "scopes": "profile history",
+    "scopes": ["profile"],
     "name": "Sample app",
     "base_uber_url": "https://api.uber.com/v1/",
     "start_latitude": "37.781955",
