@@ -54,7 +54,7 @@ def signup():
     params = {
         'response_type': 'code',
         'redirect_uri': get_redirect_uri(request),
-        'scope': config.get('scopes'),
+        'scope': ','.join(config.get('scopes')),
     }
     url = generate_oauth_service().get_authorize_url(**params)
     return redirect(url)
