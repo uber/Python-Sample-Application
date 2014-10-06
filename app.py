@@ -13,8 +13,6 @@ app = Flask(__name__, static_folder='static', static_url_path='')
 app.requests_session = requests.Session()
 app.secret_key = os.urandom(24)
 
-sslify = SSLify(app)
-
 with open('config.json') as f:
     config = json.load(f)
 
