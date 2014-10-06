@@ -1,16 +1,12 @@
 # Test harness
 pytest==2.5.2
-
 # Coverage
 pytest-cov==1.6
-
 # HTTP Fixtures
 betamax==0.4.0
-
 # LINT OR DIE
 flake8==2.1.0
 pep8==1.5.6
 pyflakes==0.8.1
-
 # Coveralls
 coveralls==0.4.2
