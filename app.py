@@ -54,7 +54,7 @@ def signup():
     params = {
         'response_type': 'code',
         'redirect_uri': get_redirect_uri(request),
-        'scope': ','.join(config.get('scopes')),
+        'scopes': ','.join(config.get('scopes')),
     }
     url = generate_oauth_service().get_authorize_url(**params)
     return redirect(url)
@@ -72,7 +72,6 @@ def submit():
         'code': request.args.get('code'),
         'grant_type': 'authorization_code'
     }
-
     response = app.requests_session.post(
         config.get('access_token_url'),
         auth=(
@@ -82,6 +81,7 @@ def submit():
         data=params,
     )
     session['access_token'] = response.json().get('access_token')
+
     return render_template(
         'success.html',
         token=response.json().get('access_token')
@@ -180,7 +180,7 @@ def price():
 @app.route('/history', methods=['GET'])
 def history():
     """Return the last 5 trips made by the logged in user."""
-    url = config.get('base_uber_url') + 'history'
+    url = config.get('base_uber_url_v1_1') + 'history'
     params = {
         'offset': 0,
         'limit': 5,

@@ -2,7 +2,7 @@
 .DEFAULT_GOAL := test
 
 test: clean lint
-	@py.test --cov app.py -s test/
+	@py.test test/ --cov app.py -s
 
 lint:
 	@flake8 .
