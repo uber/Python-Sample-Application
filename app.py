@@ -5,7 +5,6 @@ import os
 from urlparse import urlparse
 
 from flask import Flask, render_template, request, redirect, session
-from flask_sslify import SSLify
 from rauth import OAuth2Service
 import requests
 
