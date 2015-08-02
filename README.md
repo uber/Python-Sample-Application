@@ -16,6 +16,8 @@ This sample includes:
 - Price estimates
 - User profile & recent trip history
 
+To see examples of how developers at [OpenTable](http://blog.opentable.com/2014/ride-there-with-uber-in-the-opentable-app/), [Foursquare](https://devblog.uber.com/foursquare-and-uber-the-perfect-ride-for-the-perfect-recommendation/) and [Trulia](https://devblog.uber.com/ubers-api-helps-trulia-customers-get-to-their-dream-homes/) have user Uber into their products, visit our [Developer Showcase](https://developer.uber.com/showcase/), or see [hackathon projects](https://developer.uber.com/showcase/) that have integrated Uber.
+
 Full documentation of the APIs are available on the online [Uber API Documentation](https://developer.uber.com/v1/endpoints/). 
 
 
@@ -51,7 +53,7 @@ Click the button below to set up this sample app on Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-You should see the Heroku new app screen below:.
+You should see the Heroku new app screen below.
 
 <img src="static/img/heroku.png" style="width: 80%;"/>
 
