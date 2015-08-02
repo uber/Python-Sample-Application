@@ -9,7 +9,15 @@
         <h1> Welcome to the /{{ endpoint }} endpoint!</h1>
         <p>Below is a {{request.method}} request/response to the Uber API for the given endpoint.</p>
         <h2>Request</h2>
-        <p> {{ api_url }} </p>
+        <p>
+            <i>
+            {% for key, value in api_headers.iteritems() %}
+                {{key}}: {{value}}<br>
+            {% endfor %}
+            <br>
+            {{ api_url }} 
+            </i>
+        </p>
         <h2>Response</h2>
         <p> {{ data }} </p>
     </body>

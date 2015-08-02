@@ -102,6 +102,7 @@ def products():
     Returns all the products currently available in San Francisco.
     """
     url = config.get('base_uber_url') + 'products'
+    headers = generate_ride_headers(session.get('access_token'))
     params = {
         'latitude': config.get('start_latitude'),
         'longitude': config.get('start_longitude'),
@@ -109,7 +110,7 @@ def products():
 
     response = app.requests_session.get(
         url,
-        headers=generate_ride_headers(session.get('access_token')),
+        headers=headers,
         params=params,
     )
 
@@ -118,8 +119,9 @@ def products():
     return render_template(
         'results.html',
         endpoint='products',
-        data=response.text,
         api_url="%s?%s" % (url, urllib.urlencode(params)),
+        api_headers=headers,
+        data=response.text,
     )
 
 
@@ -130,6 +132,7 @@ def time():
     Returns the time estimates from the given lat/lng given below.
     """
     url = config.get('base_uber_url') + 'estimates/time'
+    headers = generate_ride_headers(session.get('access_token'))
     params = {
         'start_latitude': config.get('start_latitude'),
         'start_longitude': config.get('start_longitude'),
@@ -137,7 +140,7 @@ def time():
 
     response = app.requests_session.get(
         url,
-        headers=generate_ride_headers(session.get('access_token')),
+        headers=headers,
         params=params,
     )
 
@@ -146,8 +149,10 @@ def time():
     return render_template(
         'results.html',
         endpoint='time',
-        data=response.text,
         api_url="%s?%s" % (url, urllib.urlencode(params)),
+        api_headers=headers,
+        data=response.text,
+
     )
 
 
@@ -158,6 +163,7 @@ def price():
     Returns the time estimates from the given lat/lng given below.
     """
     url = config.get('base_uber_url') + 'estimates/price'
+    headers = generate_ride_headers(session.get('access_token'))
     params = {
         'start_latitude': config.get('start_latitude'),
         'start_longitude': config.get('start_longitude'),
@@ -167,7 +173,7 @@ def price():
 
     response = app.requests_session.get(
         url,
-        headers=generate_ride_headers(session.get('access_token')),
+        headers=headers,
         params=params,
     )
 
@@ -176,8 +182,9 @@ def price():
     return render_template(
         'results.html',
         endpoint='price',
-        data=response.text,
         api_url="%s?%s" % (url, urllib.urlencode(params)),
+        api_headers=headers,
+        data=response.text,
     )
 
 
@@ -185,6 +192,7 @@ def price():
 def history():
     """Return the last 5 trips made by the logged in user."""
     url = config.get('base_uber_url_v1_1') + 'history'
+    headers = generate_ride_headers(session.get('access_token'))
     params = {
         'offset': 0,
         'limit': 25,
@@ -192,7 +200,7 @@ def history():
 
     response = app.requests_session.get(
         url,
-        headers=generate_ride_headers(session.get('access_token')),
+        headers=headers,
         params=params,
     )
 
@@ -201,8 +209,9 @@ def history():
     return render_template(
         'results.html',
         endpoint='history',
-        data=response.text,
         api_url="%s?%s" % (url, urllib.urlencode(params)),
+        api_headers=headers,
+        data=response.text,
     )
 
 
@@ -210,9 +219,10 @@ def history():
 def me():
     """Return user information including name, picture and email."""
     url = config.get('base_uber_url') + 'me'
+    headers = generate_ride_headers(session.get('access_token'))
     response = app.requests_session.get(
         url,
-        headers=generate_ride_headers(session.get('access_token')),
+        headers=headers,
     )
 
     if response.status_code != 200:
@@ -220,8 +230,9 @@ def me():
     return render_template(
         'results.html',
         endpoint='me',
-        data=response.text,
         api_url="%s" % (url),
+        api_headers=headers,
+        data=response.text,
     )
 
 
