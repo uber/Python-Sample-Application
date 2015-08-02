@@ -8,7 +8,7 @@ This is an example Python/Flask application that shows a working example of [Ube
 
 <img src="static/img/auth.png" style="width: 80%;"/>
 
-This sample includes:
+This sample shows the following API calls at work:
 
 - [User authentication](https://developer.uber.com/v1/auth/)
 - [Product query](https://developer.uber.com/v1/endpoints/)
