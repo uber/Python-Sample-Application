@@ -14,12 +14,12 @@ This sample includes:
 - [Product query](https://developer.uber.com/v1/endpoints/)
 - Time estimates
 - Price estimates
-- User profile & history
+- User profile & recent trip history
 
 Full documentation of the APIs are available on the online [Uber API Documentation](https://developer.uber.com/v1/endpoints/). 
 
 
-Getting Started
+Getting started
 ---------------
 
 1. Visit [https://developer.uber.com/](https://developer.uber.com/) to sign up for an Uber developer account.
@@ -44,25 +44,39 @@ Testing
 3. If you delete the fixtures, or decide to add some of your own, you’ll have to re-generate them, and the way this is done is by running the app, getting an auth_token from the main page of the app. Paste that token in place of the `test_auth_token` at the top of the `test_endpoints.py` file, then run the tests.
 
 
-Development
------------
-
-If you want to work on this application we’d love your pull requests and tickets on GitHub!
-
-1. If you open up a ticket, please make sure it describes the problem or feature request fully.
-2. If you send us a pull request, make sure you add a test for what you added, and make sure the full test suite runs with `make test`.
-
-Deploy to Heroku
+Deploying to Heroku
 ----------------
 
 Click the button below to set up this sample app on Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-After creating your app on Heroku, you have to configure the redirect URL for your Uber OAuth app. Use a `https://`*{your-app-name}*`.herokuapp.com/submit` URL.
-You will also want to configure the heroku environment variable FLASK_DEBUG=False in order to properly serve SSL traffic.
+You should see the Heroku new app screen below:.
 
-Making Requests
+<img src="static/img/heroku.png" style="width: 80%;"/>
+
+Before your app will work, you need to:
+
+1. Specify the Client ID and Secret in the Heroku app
+2. Configure your [Uber OAuth app](https://developer.uber.com/apps/) to have a redirect URL of `https://`*{your-app-name}*`.herokuapp.com/submit` URL.
+3. Configure the heroku environment variable `FLASK_DEBUG=False` to serve SSL traffic.
+
+Making requests
 ---------------
 
-The base for all requests is https://api.uber.com/v1/, to find a list of all available endpoints, please visit: https://developer.uber.com/v1/endpoints/
+The base for all requests is https://api.uber.com/v1/, where `v1` is the specific version of the API you are requestiong.
+
+To see a list of all available endpoints, please visit: [https://developer.uber.com/v1/endpoints/](https://developer.uber.com/v1/endpoints/)
+
+Have an for or improvement?
+-----------
+
+We’d love your pull requests and tickets on GitHub to make this sample code even better. 
+
+1. If you open up a ticket, please make sure it describes the problem or feature request fully.
+2. If you send us a pull request, make sure you add a test for what you added, and make sure the full test suite runs with `make test`.
+
+For additional help with the Uber APIs, please see [our support page](https://developer.uber.com/support/) or check out  our [forum on StackOverflow](http://stackoverflow.com/questions/tagged/uber-api).
+
+
+
