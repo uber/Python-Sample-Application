@@ -5,12 +5,12 @@
     </head>
     <body>
         {% if token %}
-        <h1> Congratulations! you have successfully authenticated and your token is: {{ token }} </h1>
+        <h1> You have successfully authenticated via the Uber API!</h1>
         {% else %}
         <h1> Something went wrong :( </h1>
         {% endif %}
 
-        <h2> Test the following functions of the api! </h2>
+        <p> Your user token is <i>{{ token }}</i>. Click below to test the following functions of the API.</p>
         <button type="button" onclick="action('products')">PRODUCTS!</button>
         <button type="button" onclick="action('time')">TIME ESTIMATES!</button>
         <button type="button" onclick="action('price')">PRICE ESTIMATES!</button>

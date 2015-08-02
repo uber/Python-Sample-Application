@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import json
 import os
+import urllib
 from urlparse import urlparse
 
 from flask import Flask, render_template, request, redirect, session
@@ -113,11 +114,12 @@ def products():
     )
 
     if response.status_code != 200:
-        return 'There was an error', response.status_code
+        return "There was an error: %s" % (response.status_code)
     return render_template(
         'results.html',
         endpoint='products',
         data=response.text,
+        api_url="%s?%s" % (url, urllib.urlencode(params)),
     )
 
 
@@ -140,11 +142,12 @@ def time():
     )
 
     if response.status_code != 200:
-        return 'There was an error', response.status_code
+        return "There was an error: %s" % (response.status_code)
     return render_template(
         'results.html',
         endpoint='time',
         data=response.text,
+        api_url="%s?%s" % (url, urllib.urlencode(params)),
     )
 
 
@@ -169,11 +172,12 @@ def price():
     )
 
     if response.status_code != 200:
-        return 'There was an error', response.status_code
+        return "There was an error: %s" % (response.status_code)
     return render_template(
         'results.html',
         endpoint='price',
         data=response.text,
+        api_url="%s?%s" % (url, urllib.urlencode(params)),
     )
 
 
@@ -183,7 +187,7 @@ def history():
     url = config.get('base_uber_url_v1_1') + 'history'
     params = {
         'offset': 0,
-        'limit': 5,
+        'limit': 25,
     }
 
     response = app.requests_session.get(
@@ -192,12 +196,13 @@ def history():
         params=params,
     )
 
-    if response.status_code != 200:
-        return 'There was an error', response.status_code
+    if response.status_code != 200: 
+        return "There was an error: %s" % (response.status_code)
     return render_template(
         'results.html',
         endpoint='history',
         data=response.text,
+        api_url="%s?%s" % (url, urllib.urlencode(params)),
     )
 
 
@@ -211,11 +216,12 @@ def me():
     )
 
     if response.status_code != 200:
-        return 'There was an error', response.status_code
+        return "There was an error: %s" % (response.status_code)
     return render_template(
         'results.html',
         endpoint='me',
         data=response.text,
+        api_url="%s" % (url),
     )
 
 

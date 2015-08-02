@@ -6,9 +6,11 @@
 
     <body>
         <button type="button" onclick="redirect_to_demo()">Back</button>
-        <h1> Welcome to the {{ endpoint }} endpoint!</h1>
-
-        <h2> Here is the result of a call to the {{ endpoint }}: </h2>
+        <h1> Welcome to the /{{ endpoint }} endpoint!</h1>
+        <p>Below is a {{request.method}} request/response to the Uber API for the given endpoint.</p>
+        <h2>Request</h2>
+        <p> {{ api_url }} </p>
+        <h2>Response</h2>
         <p> {{ data }} </p>
     </body>
 </html>
