@@ -1,27 +1,39 @@
-Example Uber app for developers
+Example Python/Flask Uber App
 ==============================
 
 [![TravisCI](https://travis-ci.org/uber/Python-Sample-Application.svg?branch=master)](https://travis-ci.org/uber/Python-Sample-Application)
 [![Coverage Status](https://coveralls.io/repos/uber/Python-Sample-Application/badge.png)](https://coveralls.io/r/uber/Python-Sample-Application)
 
-https://developer.uber.com/
+This is an example Python/Flask application that shows a working example of [Uber's  APIs](https://developer.uber.com/), including authentication and REST calls.
 
-What Is This?
--------------
+<img src="static/img/auth.png" style="width: 80%;"/>
 
-This is a simple Python/Flask application intended to provide a working example of Uber's external API. The goal of these endpoints is to be simple, well-documented and to provide a base for developers to develop other applications off of.
+This sample includes:
+
+- [User authentication](https://developer.uber.com/v1/auth/)
+- [Product query](https://developer.uber.com/v1/endpoints/)
+- Time estimates
+- Price estimates
+- User profile & history
+
+Full documentation of the APIs are available on the online [Uber API Documentation](https://developer.uber.com/v1/endpoints/). 
 
 
-How To Use This
+Getting Started
 ---------------
 
-1. Navigate over to https://developer.uber.com/, and sign up for an Uber developer account.
-2. Register a new Uber application and make your Redirect URI `http://localhost:7000/submit` - ensure that both the `profile` and `history` OAuth scopes are checked.
-3. Fill in the relevant information in the `config.json` file in the root folder and add your client id and secret as the environment variables `UBER_CLIENT_ID` and `UBER_CLIENT_SECRET`.
-4. Run `export UBER_CLIENT_ID="`*{your client id}*`"&&export UBER_CLIENT_SECRET="`*{your client secret}*`"`
+1. Visit [https://developer.uber.com/](https://developer.uber.com/) to sign up for an Uber developer account.
+2. Register a new Uber application and ensure that:
+    - Your Redirect URI is `http://localhost:7000/submit` 
+	- Both the `profile` and `history` OAuth scopes are checked
+	- Copy your Client ID and Client Secret
+3. Add your Client ID and Client Secret as local environment variables using the following:
+	- `export UBER_CLIENT_ID={your client id}`
+	- `export UBER_CLIENT_SECRET={your client secret}`
+4. Review the `config.json` file for any relevant local changes
 5. Run `pip install -r requirements.txt` to install dependencies
 6. Run `python app.py`
-7. Navigate to http://localhost:7000 in your browser
+7. Open [http://localhost:7000](http://localhost:7000) in your browser
 
 
 Testing
