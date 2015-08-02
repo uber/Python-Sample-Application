@@ -16,7 +16,7 @@ This sample shows the following API calls at work:
 - Price estimates
 - User profile & recent trip history
 
-To see examples of how developers at [OpenTable](http://blog.opentable.com/2014/ride-there-with-uber-in-the-opentable-app/), [Foursquare](https://devblog.uber.com/foursquare-and-uber-the-perfect-ride-for-the-perfect-recommendation/) and [Trulia](https://devblog.uber.com/ubers-api-helps-trulia-customers-get-to-their-dream-homes/) have user Uber into their products, visit our [Developer Showcase](https://developer.uber.com/showcase/), or see [hackathon projects](https://developer.uber.com/showcase/) that have integrated Uber.
+To see examples of how developers at [OpenTable](http://blog.opentable.com/2014/ride-there-with-uber-in-the-opentable-app/), [Foursquare](https://devblog.uber.com/foursquare-and-uber-the-perfect-ride-for-the-perfect-recommendation/) and [Trulia](https://devblog.uber.com/ubers-api-helps-trulia-customers-get-to-their-dream-homes/) have used Uber in their products, visit our [Developer Showcase](https://developer.uber.com/showcase/) or see [hackathon projects](https://developer.uber.com/showcase/) that have integrated Uber.
 
 Full documentation of the APIs are available on the online [Uber API Documentation](https://developer.uber.com/v1/endpoints/). 
 
@@ -70,7 +70,7 @@ The base for all requests is https://api.uber.com/v1/, where `v1` is the specifi
 
 To see a list of all available endpoints, please visit: [https://developer.uber.com/v1/endpoints/](https://developer.uber.com/v1/endpoints/)
 
-Have an for or improvement?
+Have an fix or improvement?
 -----------
 
 We’d love your pull requests and tickets on GitHub to make this sample code even better. 
