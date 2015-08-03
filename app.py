@@ -204,7 +204,7 @@ def history():
         params=params,
     )
 
-    if response.status_code != 200: 
+    if response.status_code != 200:
         return "There was an error: %s" % (response.status_code)
     return render_template(
         'results.html',
