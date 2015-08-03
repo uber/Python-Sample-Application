@@ -1,16 +1,34 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
         <script src="util.js"></script>
     </head>
     <body>
-        {% if token %}
-        <h1> Congratulations! you have successfully authenticated and your token is: {{ token }} </h1>
-        {% else %}
-        <h1> Something went wrong :( </h1>
-        {% endif %}
+        <table cellpadding="8">
+        <tr>
+        <td width="10%" valign="top">
+            <img src="img/logo.png" width="60">
+        </td>
+        <td width="*" valign="top">
+            {% if token %}
+            <h2> Successfully authenticated via the Uber API!</h2>
 
-        <h2> Test the following functions of the api! </h2>
+            <p> Your user token is <i>{{ token }}</i>.</p>
+
+            {% else %}
+            <h1> Something went wrong :( </h1>
+            {% endif %}
+
+        </td>
+        </tr>
+        </table>
+
+        <hr width="100%">
+
+        <p>
+            Click button below to test API calls: 
+        </p>
         <button type="button" onclick="action('products')">PRODUCTS!</button>
         <button type="button" onclick="action('time')">TIME ESTIMATES!</button>
         <button type="button" onclick="action('price')">PRICE ESTIMATES!</button>
