@@ -1,13 +1,14 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
         <script src="util.js"></script>
     </head>
 
     <body>
-        <button type="button" onclick="redirect_to_demo()">Back</button>
-        <h1> Welcome to the /{{ endpoint }} endpoint!</h1>
-        <p>Below is a {{request.method}} request/response to the Uber API for the given endpoint.</p>
+        <button type="button" onclick="redirect_to_demo()" class="back">&lt; GO BACK</button>
+        <h1> The /{{ endpoint }} endpoint</h1>
+        <p> Below is a {{request.method}} request/response to the Uber API for the given endpoint.</p>
         <h2>Request</h2>
         <p>
             <i>
