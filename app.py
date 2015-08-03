@@ -115,7 +115,7 @@ def products():
     )
 
     if response.status_code != 200:
-        return "There was an error: %s" % (response.status_code)
+        return "There was an error: %s" % (response.status_code), response.status_code
     return render_template(
         'results.html',
         endpoint='products',
@@ -145,7 +145,7 @@ def time():
     )
 
     if response.status_code != 200:
-        return "There was an error: %s" % (response.status_code)
+        return "There was an error: %s" % (response.status_code), response.status_code
     return render_template(
         'results.html',
         endpoint='time',
@@ -178,7 +178,7 @@ def price():
     )
 
     if response.status_code != 200:
-        return "There was an error: %s" % (response.status_code)
+        return "There was an error: %s" % (response.status_code), response.status_code
     return render_template(
         'results.html',
         endpoint='price',
@@ -205,7 +205,7 @@ def history():
     )
 
     if response.status_code != 200:
-        return "There was an error: %s" % (response.status_code)
+        return "There was an error: %s" % (response.status_code), response.status_code
     return render_template(
         'results.html',
         endpoint='history',
@@ -226,7 +226,7 @@ def me():
     )
 
     if response.status_code != 200:
-        return "There was an error: %s" % (response.status_code)
+        return "There was an error: %s" % (response.status_code), response.status_code
     return render_template(
         'results.html',
         endpoint='me',
