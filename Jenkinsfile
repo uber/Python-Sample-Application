@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        scannerHome= '/opt/sonar-scanner/bin/sonar-scanner'
+        scannerHome='/opt/sonar-scanner/bin/sonar-scanner'
     }
     
     stages {
