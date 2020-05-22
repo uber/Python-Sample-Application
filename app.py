@@ -1,6 +1,5 @@
 from __future__ import absolute_import
-import json
-import os
+import json, os
 from urlparse import urlparse
 
 from flask import Flask, render_template, request, redirect, session
