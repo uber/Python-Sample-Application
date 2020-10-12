@@ -71,3 +71,4 @@ webencodings==0.5.1
 Werkzeug==0.14.1
 widgetsnbextension==3.4.2
 xlrd==1.1.0
+flask==0.12.2
