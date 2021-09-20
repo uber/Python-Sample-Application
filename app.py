@@ -22,7 +22,7 @@ with open('config.json') as f:
 def generate_oauth_service():
     """Prepare the OAuth2Service that is used to make requests later."""
     return OAuth2Service(
-        client_id=os.environ.get('UBER_CLIENT_ID'),
+        # client_id=os.environ.get('UBER_CLIENT_ID'),
         client_secret=os.environ.get('UBER_CLIENT_SECRET'),
         name=config.get('name'),
         authorize_url=config.get('authorize_url'),
