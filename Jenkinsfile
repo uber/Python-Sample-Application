@@ -20,7 +20,7 @@ timestamps {
                     export trivyVersion=0.32.0
   		    curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b . v${trivyVersion}  
 		    ./trivy plugin update aqua
-                    ./trivy fs --debug --format template --template "@Report-Templates/aqua.tpl" -o report.html --security-checks config,vuln,secret .
+                    ./trivy fs --debug -o report.html --security-checks config,vuln,secret .
 
                 '''
             }
@@ -56,7 +56,7 @@ timestamps {
 		    fi
 		    BINDIR="." sh install.sh
 		    rm install.sh install.sh.checksum
-                    ./billy generate -v \
+                    ./billy health -v \
                         --aqua-key ${AQUA_KEY} \
                         --aqua-secret ${AQUA_SECRET} \
                         --access-token ${GITHUB_TOKEN} \
