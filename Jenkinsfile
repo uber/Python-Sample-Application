@@ -51,7 +51,7 @@ timestamps {
 		    fi
 		    BINDIR="." sh install.sh
 		    rm install.sh install.sh.checksum
-                    ./billy health -v \
+                    ./billy generate -v \
                         --aqua-key ${AQUA_KEY} \
                         --aqua-secret ${AQUA_SECRET} \
                         --access-token ${GITHUB_TOKEN} \
