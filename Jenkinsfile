@@ -15,7 +15,7 @@ timestamps {
             ]) {
                 sh '''
                     export TRIVY_RUN_AS_PLUGIN=aqua
-                    export trivyVersion=0.32.0
+                    export trivyVersion=0.35.0
   		    curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b . v${trivyVersion}  
 		    ./trivy plugin update aqua
                     ./trivy fs --debug -o report.html --security-checks config,vuln,secret .
