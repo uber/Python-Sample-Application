@@ -8,5 +8,5 @@ rauth==0.7.0
 requests==2.3.0
 wsgiref==0.1.2
 
-gunicorn==18.0
+gunicorn==18.1
 Flask-SSLify==0.1.4
