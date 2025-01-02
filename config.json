@@ -1,13 +1,6 @@
 {
-    "access_token_url": "https://login.uber.com/oauth/token",
-    "authorize_url": "https://login.uber.com/oauth/authorize",
-    "base_url": "https://login.uber.com/",
-    "scopes": ["profile", "history_lite"],
-    "name": "Sample app",
-    "base_uber_url": "https://api.uber.com/v1/",
-    "base_uber_url_v1_1" : "https://api.uber.com/v1.1/",
-    "start_latitude": "37.781955",
-    "start_longitude":  "-122.402367",
-    "end_latitude": "37.744352",
-    "end_longitude": "-122.416743"
+  "UBER_CLIENT_ID": "your-client-id",
+  "UBER_CLIENT_SECRET": "your-client-secret",
+  "REDIRECT_URI": "http://localhost:7000/submit"
 }
+
