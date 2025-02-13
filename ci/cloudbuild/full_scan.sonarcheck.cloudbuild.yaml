@@ -1,0 +1,33 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "us-central1-docker.pkg.dev/lab-test-project-1-305710/pkr-test/uber-example:1",
+        "."
+      ]
+
+  - name: "sonarsource/sonar-scanner-cli"
+    secretEnv:
+      - SONAR_TOKEN
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        sonar-scanner \
+          -Dsonar.working.directory=/tmp/.scannerwork \
+          -Dsonar.login=$$SONAR_TOKEN \
+          -Dsonar.organization=pkr-test \
+          -Dsonar.projectKey=pkr-test_Python-Sample-Application \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=https://sonarcloud.io
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/244985839439/secrets/SONAR_TOKEN/versions/1
+      env: "SONAR_TOKEN"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
