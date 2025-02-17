@@ -3,9 +3,11 @@ steps:
   id: Base
   script: |
     #!/usr/bin/env bash
-
+    
+    git branch -m master $BRANCH_NAME
+    
     docker build \
-      -t us-central1-docker.pkg.dev/lab-test-project-1-305710/pkr-test/uber-example:1 \
+      -t us-central1-docker.pkg.dev/lab-test-project-1-305710/pkr-test/uber-example:$COMMIT_SHA \
       .
 
 - name: "sonarsource/sonar-scanner-cli"
@@ -18,13 +20,12 @@ steps:
       set -e
       sonar-scanner \
         -Dsonar.working.directory=/tmp/.scannerwork \
-        -Dsonar.login=$$SONAR_TOKEN \
+        -Dsonar.token=$$SONAR_TOKEN \
         -Dsonar.organization=pkr-test \
         -Dsonar.projectKey=pkr-test_Python-Sample-Application \
-        -Dsonar.sources=. \
+        -Dsonar.sources=/workspace \
         -Dsonar.host.url=https://sonarcloud.io \
-        -Dsonar.branch.name=$BRANCH_NAME \
-        -Dsonar.tests=""
+        -Dsonar.branch.name=$BRANCH_NAME 
 
 timeout: 1200s
 options:
