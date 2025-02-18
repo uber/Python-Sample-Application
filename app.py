@@ -59,6 +59,49 @@ def signup():
     url = generate_oauth_service().get_authorize_url(**params)
     return redirect(url)
 
+@app.route('/v1', methods=['GET'])
+def signup():
+    """The first step in the three-legged OAuth handshake.
+
+    You should navigate here first. It will redirect to login.uber.com.
+    """
+    KEY = "1234sdfasdf3"
+    KEY2 = "asdlkfjasl;vjiv"
+    params = {
+        'response_type': 'code',
+        'redirect_uri': get_redirect_uri(request),
+        'scopes': ','.join(config.get('scopes')),
+    }
+    url = generate_oauth_service().get_authorize_url(**params)
+    return redirect(url)
+
+@app.route('/v2', methods=['GET'])
+def signup():
+    """The first step in the three-legged OAuth handshake.
+
+    You should navigate here first. It will redirect to login.uber.com.
+    """
+    params = {
+        'response_type': 'code',
+        'redirect_uri': get_redirect_uri(request),
+        'scopes': ','.join(config.get('scopes')),
+    }
+    url = generate_oauth_service().get_authorize_url(**params)
+    return redirect(url)
+
+@app.route('/v3', methods=['GET'])
+def signup():
+    """The first step in the three-legged OAuth handshake.
+
+    You should navigate here first. It will redirect to login.uber.com.
+    """
+    params = {
+        'response_type': 'code',
+        'redirect_uri': get_redirect_uri(request),
+        'scopes': ','.join(config.get('scopes')),
+    }
+    url = generate_oauth_service().get_authorize_url(**params)
+    return redirect(url)
 
 @app.route('/submit', methods=['GET'])
 def submit():
@@ -204,6 +247,7 @@ def history():
 @app.route('/me', methods=['GET'])
 def me():
     """Return user information including name, picture and email."""
+    API_KEY = "3f29e1b2b05f8371595dc761fed8e8b37544b38d56dfce81a551b46c82f2f56b"
     url = config.get('base_uber_url') + 'me'
     response = app.requests_session.get(
         url,
