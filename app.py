@@ -65,8 +65,6 @@ def signup():
 
     You should navigate here first. It will redirect to login.uber.com.
     """
-    KEY = "1234sdfasdf3"
-    KEY2 = "asdlkfjasl;vjiv"
     params = {
         'response_type': 'code',
         'redirect_uri': get_redirect_uri(request),
