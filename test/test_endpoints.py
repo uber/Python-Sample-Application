@@ -1,7 +1,7 @@
 import unittest
 
 from betamax import Betamax
-from app import app
+from app import app, generate_ride_headers, get_redirect_uri
 
 with Betamax.configure() as config:
     config.cassette_library_dir = 'test/fixtures'
@@ -21,10 +21,39 @@ class TestCases(unittest.TestCase):
         response = app.test_client().get('/health')
         self.assertEquals(response.data, ';-)')
 
+    def test_generate_ride_headers_unit(self):
+        """Assert ride headers are generated with bearer auth and content type."""
+        headers = generate_ride_headers('unit_token')
+        self.assertEquals(headers.get('Authorization'), 'bearer unit_token')
+        self.assertEquals(headers.get('Content-Type'), 'application/json')
+
+    def test_get_redirect_uri_localhost_unit(self):
+        """Assert localhost requests generate http redirect URIs with port."""
+        request = type('Request', (), {'url': 'http://localhost:7000/'})()
+        self.assertEquals(
+            get_redirect_uri(request),
+            'http://localhost:7000/submit'
+        )
+
+    def test_get_redirect_uri_non_localhost_unit(self):
+        """Assert non-localhost requests generate https redirect URIs."""
+        request = type('Request', (), {'url': 'https://sample-app.herokuapp.com/'})()
+        self.assertEquals(
+            get_redirect_uri(request),
+            'https://sample-app.herokuapp.com/submit'
+        )
+
     def test_root_endpoint(self):
         """Assert that the / endpoint correctly redirects to login.uber.com."""
         response = app.test_client().get('/')
         self.assertIn('login.uber.com', response.data)
+
+    def test_root_endpoint_pre_checking_params(self):
+        """Assert oauth pre-check params are present before provider redirect."""
+        response = app.test_client().get('/')
+        self.assertIn('response_type=code', response.location)
+        self.assertIn('redirect_uri=', response.location)
+        self.assertIn('scope=', response.location)
 
     def test_submit_endpoint_failure(self):
         """Assert that the submit endpoint returns no code in the response."""
